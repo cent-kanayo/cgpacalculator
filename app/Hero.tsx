@@ -8,7 +8,7 @@ interface Score {
   grade: number;
   value: string;
 }
-const course: Score = {
+const course = {
   id: new Date().getTime(),
   score: 0,
   units: 0,
@@ -40,7 +40,7 @@ const courses = [
 ];
 
 const Hero = () => {
-  const [grades, setGrades] = useState<Score[]>(courses);
+  const [grades, setGrades] = useState(courses as Score[]);
   const [gp, setGp] = useState(0);
   const [cgpa, setCgpa] = useState(0);
 
@@ -54,7 +54,7 @@ const Hero = () => {
     e.preventDefault();
     let totalScore = 0;
     let totalUnit = 0;
-    const formatted = grades.map((score) => {
+    const formatted = grades.map((score): Score => {
       if (score.score < 40) {
         return { ...score, grade: 0, value: 'F' };
       } else if (score.score < 45) {
@@ -68,7 +68,9 @@ const Hero = () => {
       } else if (score.score >= 70) {
         return { ...score, grade: 5, value: 'A' };
       }
+      return score;
     });
+    setGrades(formatted);
     const yourGp = formatted.reduce(
       (acc, score) => {
         totalScore += score?.grade! * score?.units!;
@@ -80,7 +82,7 @@ const Hero = () => {
       },
       { gp: 0, semesterUnits: 0, semesterScore: 0 }
     );
-    setGrades(formatted);
+
     setGp(yourGp.gp);
     const cgpa = +cgpaRef.current!.value;
     const totalUnits = +totalUnitsRef.current!.value;
@@ -145,11 +147,12 @@ const Hero = () => {
                     className="w-20 bg-inherit border-b-2 focus:outline-none text-white text-xl"
                   />
 
-                  <p>{score.value}</p>
+                  <p className="mr-40">{score.value}</p>
                   <button
                     onClick={() =>
                       setGrades(grades.filter((gd) => gd.id !== score.id))
                     }
+                    className="justify-self-end"
                   >
                     remove
                   </button>
@@ -166,7 +169,7 @@ const Hero = () => {
               <button
                 className="bg-white px-2 py-1 rounded-md text-red-400 shadow-md hover:bg-red-400 hover:text-white transition-all duration-300 ease-linear"
                 type="button"
-                onClick={() => addCourse()}
+                onClick={addCourse}
               >
                 Add Course
               </button>
