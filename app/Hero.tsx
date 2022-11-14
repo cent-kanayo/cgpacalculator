@@ -98,7 +98,7 @@ const Hero = () => {
   };
   return (
     <main className="bg-white p-4 vh">
-      <div className="container mx-auto border border-gray-400 bg-gray-200 p-4 rounded-md md:max-w-lg">
+      <div className="container mx-auto border border-gray-400 bg-gray-200 p-4 rounded-md lg:max-w-lg">
         <div className="border-b-2 border-gray-200">
           <h1 className="text-2xl font-semibold mb-4 tracking-wide uppercase">
             Grade scale: 5.00
@@ -149,7 +149,7 @@ const Hero = () => {
                     className="w-20 bg-inherit border-b-2 focus:outline-none text-white text-xl"
                   />
 
-                  <p className="mr-40">{score.value}</p>
+                  <p className="mr-20 lg:mr-40">{score.value}</p>
                   <button
                     onClick={() =>
                       setGrades(grades.filter((gd) => gd.id !== score.id))
