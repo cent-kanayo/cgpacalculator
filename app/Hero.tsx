@@ -92,6 +92,8 @@ const Hero = () => {
         (aggregateScore + yourGp.semesterScore) /
         (yourGp.semesterUnits + totalUnits);
       setCgpa(newCgpa);
+    } else {
+      setCgpa(gp);
     }
   };
   return (
