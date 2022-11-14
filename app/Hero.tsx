@@ -68,7 +68,7 @@ const Hero = () => {
       } else if (score.score >= 70) {
         return { ...score, grade: 5, value: 'A' };
       }
-      return score;
+      return { ...score, value: '' };
     });
     setGrades(formatted);
     const yourGp = formatted.reduce(
@@ -93,12 +93,12 @@ const Hero = () => {
         (yourGp.semesterUnits + totalUnits);
       setCgpa(newCgpa);
     } else {
-      setCgpa(gp);
+      setCgpa(yourGp.gp);
     }
   };
   return (
     <main className="bg-white p-4 vh">
-      <div className="container mx-auto border border-gray-400 bg-gray-200 p-4 rounded-md lg:max-w-lg">
+      <div className="md:container mx-auto border border-gray-400 bg-gray-200 p-4 rounded-md lg:max-w-lg">
         <div className="border-b-2 border-gray-200">
           <h1 className="text-2xl font-semibold mb-4 tracking-wide uppercase">
             Grade scale: 5.00
