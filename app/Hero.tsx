@@ -1,5 +1,6 @@
 'use client';
 import React, { useRef, useState } from 'react';
+import { FaTrash } from 'react-icons/fa';
 
 interface Score {
   id: number;
@@ -43,6 +44,7 @@ const Hero = () => {
   const [grades, setGrades] = useState(courses as Score[]);
   const [gp, setGp] = useState(0);
   const [cgpa, setCgpa] = useState(0);
+  const [showGrade, setShowGrade] = useState(false);
 
   const cgpaRef = useRef<null | HTMLInputElement>(null);
   const totalUnitsRef = useRef<null | HTMLInputElement>(null);
@@ -95,81 +97,84 @@ const Hero = () => {
     } else {
       setCgpa(yourGp.gp);
     }
+    setShowGrade(true);
   };
   return (
-    <main className="bg-white p-4 vh">
-      <div className="md:container mx-auto border border-gray-400 bg-gray-200 p-4 rounded-md lg:max-w-lg">
+    <main className="p-2 md:max-w-[500px] mx-auto">
+      <div className=" border border-gray-400 bg-white p-4 rounded-md ">
         <div className="border-b-2 border-gray-200">
-          <h1 className="text-2xl font-semibold mb-4 tracking-wide uppercase">
+          <h1 className="text-2xl text-center text-blue-700 font-semibold mb-4 tracking-wide uppercase">
             Grade scale: 5.00
           </h1>
         </div>
-        <div className=" rounded-md p-2 ">
+        <div className=" rounded-md p-2">
           <form onSubmit={handleSubmit}>
-            <div className="flex justify-between items-center mb-4">
-              <div className="flex flex-col gap-4 bg-orange-400 rounded-md shadow-md p-2">
+            <div className="flex justify-between items-center mb-6 gap-x-5">
+              <div className="flex-1 flex flex-col gap-4 text-blue-600 rounded-md shadow-md p-2">
                 <label htmlFor="cgpa">CURRENT CGPA</label>
                 <input
-                  type="text"
+                  type="number"
                   ref={cgpaRef}
-                  className="w-20 bg-inherit border-b-2 focus:outline-none text-white text-xl"
+                  className="w-full bg-inherit border-b-2 focus:outline-none text-blue-600 text-xl"
                 />
               </div>
-              <div className="flex flex-col gap-4 bg-orange-400 rounded-md shadow-md p-2">
+              <div className="flex-1 flex flex-col gap-4 text-blue-600 rounded-md shadow-md p-2">
                 <label htmlFor="cgpa">TOTAL UNITS TAKEN</label>
                 <input
                   type="number"
                   ref={totalUnitsRef}
-                  className="w-20 bg-inherit border-b-2 focus:outline-none text-white text-xl"
+                  className="w-full bg-inherit border-b-2 focus:outline-none text-blue-600 text-xl"
                 />
               </div>
             </div>
-
-            <div className="flex gap-10">
-              <h3>Total Score</h3>
-              <h3>Units</h3>
-              <h3>Grade</h3>
+            <div className="bg-blue-700 text-white  py-2 text-xl rounded-md mb-8 ">
+              <h3>Current semester scores</h3>
             </div>
 
+            <div className="flex gap-10 text-blue-600 mb-4">
+              <h3>Course Score</h3>
+              <h3>Course Units</h3>
+              {showGrade && <h3>Grade</h3>}
+            </div>
             {grades.map((score, index) => {
               return (
                 <div
                   key={index}
-                  className="mb-4 flex gap-4 bg-orange-400 rounded-md shadow-md p-2"
+                  className="mb-6 flex items-center justify-between gap-12 bg-white border-2 border-blue-700  rounded-md shadow-md p-2"
                 >
                   <input
                     type="number"
                     onChange={(e) => (score.score = +e.target.value)}
-                    className="w-20 bg-inherit border-b-2 focus:outline-none text-white text-xl"
+                    className="w-14 bg-inherit border-b-2 border-blue-700 focus:outline-none text-blue-600 text-xl"
                   />
                   <input
                     type="number"
                     onChange={(e) => (score.units = +e.target.value)}
                     required
-                    className="w-20 bg-inherit border-b-2 focus:outline-none text-white text-xl"
+                    className="w-14 bg-inherit border-b-2 border-blue-700  md:mr-10 focus:outline-none text-blue-600 text-xl"
                   />
 
-                  <p className="mr-20 lg:mr-40">{score.value}</p>
+                  <p className="mr-20 text-blue-600 ">{score.value}</p>
                   <button
                     onClick={() =>
                       setGrades(grades.filter((gd) => gd.id !== score.id))
                     }
-                    className="justify-self-end"
+                    className="justify-self-end bg-"
                   >
-                    remove
+                    <FaTrash fill="blue" />
                   </button>
                 </div>
               );
             })}
-            <div className="flex justify-between">
+            <div className="flex justify-between mb-4">
               <button
                 type="submit"
-                className="bg-red-400 px-2 py-1 rounded-md text-white shadow-md hover:bg-white hover:text-red-400 transition-all duration-300 ease-linear"
+                className="bg-blue-600 px-2 py-1 rounded-md text-white shadow-md  hover:animate-pulse transition-all duration-300 ease-linear"
               >
                 Calculate GPA
               </button>
               <button
-                className="bg-white px-2 py-1 rounded-md text-red-400 shadow-md hover:bg-red-400 hover:text-white transition-all duration-300 ease-linear"
+                className="bg-white px-2 py-1 rounded-md text-blue-600 border-2 border-blue-700 hover:animate-pulse transition-all duration-300 ease-linear"
                 type="button"
                 onClick={addCourse}
               >
@@ -179,7 +184,7 @@ const Hero = () => {
           </form>
         </div>
 
-        <div className="flex gap-10">
+        <div className="flex gap-10 text-blue-700 text-xl font-semibold">
           <h3>Your GPA is: {gp.toFixed(2)}</h3>
           <h3>Your CGPA is: {cgpa.toFixed(2)}</h3>
         </div>
