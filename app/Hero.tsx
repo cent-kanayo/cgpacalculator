@@ -100,7 +100,7 @@ const Hero = () => {
     setShowGrade(true);
   };
   return (
-    <main className="w-full p-2 md:max-w-[500px] mx-auto">
+    <main className="w-full relative  p-2 md:w-[500px] mx-auto">
       <div className=" border border-gray-400 bg-white p-4 rounded-md ">
         <div className="border-b-2 border-gray-200">
           <h1 className="text-2xl text-center text-blue-700 font-semibold mb-4 tracking-wide uppercase">
@@ -127,45 +127,42 @@ const Hero = () => {
                 />
               </div>
             </div>
-            <div className="bg-blue-700 text-white  py-2 text-xl rounded-md mb-8 ">
+            <div className="bg-blue-700 text-white px-1  py-2 text-xl rounded-md mb-8 ">
               <h3>Current semester scores</h3>
             </div>
 
-            <div className="flex gap-10 text-blue-600 mb-4">
-              <h3>Course Score</h3>
-              <h3>Course Units</h3>
-              {showGrade && <h3>Grade</h3>}
+            <div className="mb-8 flex gap-8">
+              <p className="w-1/4 text-sm font-semibold">Total score</p>
+              <p className="w-1/4 text-sm font-semibold">course units</p>
+              {showGrade && <p className="text-sm font-semibold">Grade</p>}
             </div>
-            {grades.map((score, index) => {
-              return (
-                <div
-                  key={index}
-                  className="mb-6 flex items-center justify-between gap-12 bg-white border-2 border-blue-700  rounded-md shadow-md p-2"
-                >
-                  <input
-                    type="number"
-                    onChange={(e) => (score.score = +e.target.value)}
-                    className="w-14 bg-inherit border-b-2 border-blue-700 focus:outline-none text-blue-600 text-xl"
-                  />
-                  <input
-                    type="number"
-                    onChange={(e) => (score.units = +e.target.value)}
-                    required
-                    className="w-14 bg-inherit border-b-2 border-blue-700  md:mr-10 focus:outline-none text-blue-600 text-xl"
-                  />
-
-                  <p className="mr-20 text-blue-600 ">{score.value}</p>
-                  <button
-                    onClick={() =>
-                      setGrades(grades.filter((gd) => gd.id !== score.id))
-                    }
-                    className="justify-self-end bg-"
-                  >
-                    <FaTrash fill="blue" />
-                  </button>
-                </div>
-              );
-            })}
+            <div className="flex flex-col mb-12">
+              {grades.map((grade) => {
+                return (
+                  <div key={grade.id} className="flex gap-8 relative">
+                    <input
+                      type="text"
+                      onChange={(e) => (grade.score = +e.target.value)}
+                      className="w-1/4 outline-none border-b border-blue-700 border-1 mb-2"
+                    />
+                    <input
+                      type="text"
+                      onChange={(e) => (grade.units = +e.target.value)}
+                      className="w-1/4 outline-none border-b border-blue-700 border-1 mb-2"
+                    />
+                    {showGrade && <p className="mb-2">{grade.value}</p>}
+                    <button
+                      onClick={() =>
+                        setGrades(grades.filter((prev) => prev.id !== grade.id))
+                      }
+                      className="absolute right-2 top-2"
+                    >
+                      <FaTrash fill="blue" />
+                    </button>
+                  </div>
+                );
+              })}
+            </div>
             <div className="flex justify-between mb-4">
               <button
                 type="submit"
