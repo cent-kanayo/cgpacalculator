@@ -100,7 +100,7 @@ const Hero = () => {
     setShowGrade(true);
   };
   return (
-    <main className="relative  p-2  mx-auto">
+    <main className="relative max-w-[500px]   p-2 md:w-[500px] mx-auto">
       <div className=" border border-gray-400 bg-white p-4 rounded-md ">
         <div className="border-b-2 border-gray-200">
           <h1 className="text-2xl text-center text-blue-700 font-semibold mb-4 tracking-wide uppercase">
@@ -141,14 +141,16 @@ const Hero = () => {
                 return (
                   <div key={grade.id} className="flex gap-8 relative">
                     <input
-                      type="text"
+                      type="number"
                       onChange={(e) => (grade.score = +e.target.value)}
                       className="w-1/4 outline-none border-b border-blue-700 border-1 mb-2"
+                      placeholder="Total score"
                     />
                     <input
-                      type="text"
+                      type="number"
                       onChange={(e) => (grade.units = +e.target.value)}
                       className="w-1/4 outline-none border-b border-blue-700 border-1 mb-2"
+                      placeholder="units"
                     />
                     {showGrade && <p className="mb-2">{grade.value}</p>}
                     <button
