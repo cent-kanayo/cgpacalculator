@@ -131,15 +131,17 @@ const Hero = () => {
               <h3>Current semester scores</h3>
             </div>
 
-            <div className="mb-8 flex gap-8">
-              <p className="w-1/4 text-sm font-semibold">Total score</p>
+            <div className="mb-8 flex gap-4">
+              <p className="text-sm font-semibold">S/N</p>
+              <p className="w-1/4 text-sm font-semibold mr-3">Total score</p>
               <p className="w-1/4 text-sm font-semibold">course units</p>
               {showGrade && <p className="text-sm font-semibold">Grade</p>}
             </div>
             <div className="flex flex-col mb-12">
-              {grades.map((grade) => {
+              {grades.map((grade, index) => {
                 return (
                   <div key={grade.id} className="flex gap-8 relative">
+                    <p>{index + 1}</p>
                     <input
                       type="number"
                       onChange={(e) => (grade.score = +e.target.value)}
