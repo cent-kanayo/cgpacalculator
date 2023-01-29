@@ -100,7 +100,7 @@ const Hero = () => {
     setShowGrade(true);
   };
   return (
-    <main className="relative p-2 lg:w-[500px] mx-auto">
+    <main className="relative w-[100vw] p-2 lg:w-[500px] mx-auto">
       <div className=" border border-gray-400 bg-white p-4 rounded-md ">
         <div className="border-b-2 border-gray-200">
           <h1 className="text-2xl text-center text-blue-700 font-semibold mb-4 tracking-wide uppercase">
