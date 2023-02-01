@@ -134,7 +134,7 @@ const Hero = () => {
             <div className="mb-8 flex gap-4">
               <p className="text-sm font-semibold">S/N</p>
               <p className="w-1/4 text-sm font-semibold mr-3">Total score</p>
-              <p className="w-1/4 text-sm font-semibold">course units</p>
+              <p className="w-1/4 text-sm font-semibold mr-6">course units</p>
               {showGrade && <p className="text-sm font-semibold">Grade</p>}
             </div>
             <div className="flex flex-col mb-12">
@@ -154,7 +154,7 @@ const Hero = () => {
                       className="w-1/4 outline-none border-b border-blue-700 border-1 mb-2 p-2"
                       placeholder="units"
                     />
-                    {showGrade && <p className="mb-2">{grade.value}</p>}
+                    {showGrade && <p className="mb-2 p-2">{grade.value}</p>}
                     <button
                       onClick={() =>
                         setGrades(grades.filter((prev) => prev.id !== grade.id))
