@@ -45,6 +45,7 @@ const Hero = () => {
   const [gp, setGp] = useState(0);
   const [cgpa, setCgpa] = useState(0);
   const [showGrade, setShowGrade] = useState(false);
+  const [error, setError] = useState(false);
 
   const cgpaRef = useRef<null | HTMLInputElement>(null);
   const totalUnitsRef = useRef<null | HTMLInputElement>(null);
@@ -86,7 +87,8 @@ const Hero = () => {
     );
 
     setGp(yourGp.gp);
-    const cgpa = +cgpaRef.current!.value;
+    const cgpa = parseFloat(cgpaRef.current!.value);
+
     const totalUnits = +totalUnitsRef.current!.value;
     if (cgpa && totalUnits) {
       const aggregateScore = cgpa * totalUnits;
@@ -99,6 +101,7 @@ const Hero = () => {
     }
     setShowGrade(true);
   };
+
   return (
     <main className="relative w-[100vw] p-2 lg:w-[500px] mx-auto">
       <div className=" border border-gray-400 bg-white p-4 rounded-md ">
@@ -110,10 +113,13 @@ const Hero = () => {
         <div className=" rounded-md p-2">
           <form onSubmit={handleSubmit}>
             <div className="flex justify-between items-center mb-6 gap-x-5">
+              {error && (
+                <p className="text-red-600">Enter only numeric values</p>
+              )}
               <div className="flex-1 flex flex-col gap-4 text-blue-600 rounded-md shadow-md p-2">
                 <label htmlFor="cgpa">CURRENT CGPA</label>
                 <input
-                  type="number"
+                  type="text"
                   ref={cgpaRef}
                   className="w-full bg-inherit border-b-2 focus:outline-none text-blue-600 text-xl"
                 />
@@ -132,15 +138,15 @@ const Hero = () => {
             </div>
 
             <div className="mb-8 flex gap-4">
-              <p className="text-[25px] tracking-wide font-semibold">S/N</p>
-              <p className="w-1/4 text-[25px] tracking-wide font-semibold mr-3">
+              <p className="text-[16px] tracking-wide font-semibold">S/N</p>
+              <p className="w-1/4 text-[16px] tracking-wide font-semibold mr-3">
                 Total score
               </p>
-              <p className="w-1/4 text-[25px] tracking-wide font-semibold mr-6">
+              <p className="w-1/4 text-[16px] tracking-wide font-semibold mr-6">
                 course units
               </p>
               {showGrade && (
-                <p className="text-[25px] tracking-wide font-semibold">Grade</p>
+                <p className="text-[16px] tracking-wide font-semibold">Grade</p>
               )}
             </div>
             <div className="flex flex-col mb-12">
@@ -191,11 +197,11 @@ const Hero = () => {
           </form>
         </div>
 
-        <div className="flex gap-10 text-blue-700 text-xl font-semibold">
-          <h3 className="text-2xl font-semibold">
+        <div className="flex justify-between text-blue-700 text-xl font-semibold">
+          <h3 className="text-xl font-semibold">
             Your GPA is: {gp.toFixed(2)}
           </h3>
-          <h3 className="text-2xl font-semibold">
+          <h3 className="text-xl font-semibold">
             Your CGPA is: {cgpa.toFixed(2)}
           </h3>
         </div>
