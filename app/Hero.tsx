@@ -141,7 +141,7 @@ const Hero = () => {
               {grades.map((grade, index) => {
                 return (
                   <div key={grade.id} className="flex gap-8 relative">
-                    <p>{index + 1}</p>
+                    <p className="p-2">{index + 1}</p>
                     <input
                       type="number"
                       onChange={(e) => (grade.score = +e.target.value)}
