@@ -8,6 +8,10 @@ export default function RootLayout({
   return (
     <html>
       <head>
+        <meta
+          name="viewport"
+          content="width=device-width, height=device-height,  initial-scale=1.0, user-scalable=no;user-scalable=0;"
+        />
         <title>CGPA CALCULATOR</title>
       </head>
       <body>

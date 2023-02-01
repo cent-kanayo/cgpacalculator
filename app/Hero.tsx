@@ -145,13 +145,13 @@ const Hero = () => {
                     <input
                       type="number"
                       onChange={(e) => (grade.score = +e.target.value)}
-                      className="w-1/4 outline-none border-b border-blue-700 border-1 mb-2"
+                      className="w-1/4 outline-none border-b border-blue-700 border-1 mb-2 p-2"
                       placeholder="Total score"
                     />
                     <input
                       type="number"
                       onChange={(e) => (grade.units = +e.target.value)}
-                      className="w-1/4 outline-none border-b border-blue-700 border-1 mb-2"
+                      className="w-1/4 outline-none border-b border-blue-700 border-1 mb-2 p-2"
                       placeholder="units"
                     />
                     {showGrade && <p className="mb-2">{grade.value}</p>}
@@ -161,7 +161,7 @@ const Hero = () => {
                       }
                       className="absolute right-2 top-2"
                     >
-                      <FaTrash fill="blue" />
+                      <FaTrash fill="blue" size={20} />
                     </button>
                   </div>
                 );
@@ -186,8 +186,12 @@ const Hero = () => {
         </div>
 
         <div className="flex gap-10 text-blue-700 text-xl font-semibold">
-          <h3>Your GPA is: {gp.toFixed(2)}</h3>
-          <h3>Your CGPA is: {cgpa.toFixed(2)}</h3>
+          <h3 className="text-2xl font-semibold">
+            Your GPA is: {gp.toFixed(2)}
+          </h3>
+          <h3 className="text-2xl font-semibold">
+            Your CGPA is: {cgpa.toFixed(2)}
+          </h3>
         </div>
       </div>
     </main>
