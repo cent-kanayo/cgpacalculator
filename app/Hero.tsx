@@ -125,7 +125,9 @@ const Hero = () => {
                 />
               </div>
               <div className="flex-1 flex flex-col gap-4 text-blue-600 rounded-md shadow-md p-2">
-                <label htmlFor="cgpa">TOTAL UNITS TAKEN</label>
+                <label htmlFor="cgpa" className="text-[12px] whitespace-nowrap">
+                  TOTAL UNITS TAKEN
+                </label>
                 <input
                   type="number"
                   ref={totalUnitsRef}
@@ -139,10 +141,10 @@ const Hero = () => {
 
             <div className="mb-8 flex gap-4">
               <p className="text-[16px] tracking-wide font-semibold">S/N</p>
-              <p className="w-1/4 text-[16px] tracking-wide font-semibold mr-3">
+              <p className="w-1/4 text-[16px] tracking-wide font-semibold mr-3 whitespace-nowrap">
                 Total score
               </p>
-              <p className="w-1/4 text-[16px] tracking-wide font-semibold mr-6">
+              <p className="w-1/4 text-[16px] tracking-wide font-semibold mr-6 whitespace-nowrap">
                 course units
               </p>
               {showGrade && (
