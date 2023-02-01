@@ -132,10 +132,16 @@ const Hero = () => {
             </div>
 
             <div className="mb-8 flex gap-4">
-              <p className="text-sm font-semibold">S/N</p>
-              <p className="w-1/4 text-sm font-semibold mr-3">Total score</p>
-              <p className="w-1/4 text-sm font-semibold mr-6">course units</p>
-              {showGrade && <p className="text-sm font-semibold">Grade</p>}
+              <p className="text-[25px] tracking-wide font-semibold">S/N</p>
+              <p className="w-1/4 text-[25px] tracking-wide font-semibold mr-3">
+                Total score
+              </p>
+              <p className="w-1/4 text-[25px] tracking-wide font-semibold mr-6">
+                course units
+              </p>
+              {showGrade && (
+                <p className="text-[25px] tracking-wide font-semibold">Grade</p>
+              )}
             </div>
             <div className="flex flex-col mb-12">
               {grades.map((grade, index) => {
