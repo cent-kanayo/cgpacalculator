@@ -139,10 +139,10 @@ const Hero = () => {
 
             <div className="mb-8 flex gap-4">
               <p className="text-[16px] tracking-wide font-semibold">S/N</p>
-              <p className="w-1/4 text-[16px] tracking-wide font-semibold mr-3 whitespace-nowrap">
+              <p className="w-1/4 text-[16px] tracking-wide font-semibold mr-1 whitespace-nowrap">
                 Total score
               </p>
-              <p className="w-1/4 text-[16px] tracking-wide font-semibold mr-6 whitespace-nowrap">
+              <p className="w-1/4 text-[16px] tracking-wide font-semibold mr-1 whitespace-nowrap">
                 course units
               </p>
               {showGrade && (
@@ -157,17 +157,17 @@ const Hero = () => {
                     <input
                       type="number"
                       onChange={(e) => (grade.score = +e.target.value)}
-                      className="w-1/4 outline-none border-b border-blue-700 border-1 mb-2 p-2"
+                      className="w-1/5 outline-none border-b border-blue-700 border-1 mb-2 p-2"
                       placeholder="Total score"
                     />
                     <input
                       type="number"
                       onChange={(e) => (grade.units = +e.target.value)}
-                      className="w-1/4 outline-none border-b border-blue-700 border-1 mb-2 p-2"
+                      className="w-1/5 outline-none border-b border-blue-700 border-1 mb-2 p-2"
                       placeholder="units"
                     />
                     {showGrade && (
-                      <p className="mb-2 p-2 mr-2">{grade.value}</p>
+                      <p className="mb-2 p-2 mr-4">{grade.value}</p>
                     )}
                     <button
                       onClick={() =>
