@@ -138,22 +138,22 @@ const Hero = () => {
             </div>
 
             <div className="mb-8 flex gap-4">
-              <p className="text-[16px] tracking-wide font-semibold">S/N</p>
-              <p className="w-1/4 text-[16px] tracking-wide font-semibold mr-1 whitespace-nowrap">
+              <p className="text-[12px] tracking-wide font-semibold">S/N</p>
+              <p className="w-1/4 text-[12px] tracking-wide font-semibold mr-1 whitespace-nowrap">
                 Total score
               </p>
-              <p className="w-1/4 text-[16px] tracking-wide font-semibold mr-1 whitespace-nowrap">
+              <p className="w-1/4 text-[12px] tracking-wide font-semibold mr-1 whitespace-nowrap">
                 course units
               </p>
               {showGrade && (
-                <p className="text-[16px] tracking-wide font-semibold">Grade</p>
+                <p className="text-[12px] tracking-wide font-semibold">Grade</p>
               )}
             </div>
             <div className="flex flex-col mb-12">
               {grades.map((grade, index) => {
                 return (
                   <div key={grade.id} className="flex gap-8 relative">
-                    <p className="p-2">{index + 1}</p>
+                    <p className="px-1 py-2">{index + 1}</p>
                     <input
                       type="number"
                       onChange={(e) => (grade.score = +e.target.value)}
@@ -200,10 +200,10 @@ const Hero = () => {
         </div>
 
         <div className="flex justify-between text-blue-700 text-xl font-semibold">
-          <h3 className="text-xl font-semibold">
+          <h3 className="text-sm font-semibold">
             Your GPA is: {gp.toFixed(2)}
           </h3>
-          <h3 className="text-xl font-semibold">
+          <h3 className="text-sm font-semibold">
             Your CGPA is: {cgpa.toFixed(2)}
           </h3>
         </div>
