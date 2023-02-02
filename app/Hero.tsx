@@ -113,9 +113,7 @@ const Hero = () => {
         <div className=" rounded-md p-2">
           <form onSubmit={handleSubmit}>
             <div className="flex justify-between items-center mb-6 gap-x-5">
-              {error && (
-                <p className="text-red-600">Enter only numeric values</p>
-              )}
+              <p className="text-red-600">Enter only numeric values</p>
               <div className="flex-1 flex flex-col gap-4 text-blue-600 rounded-md shadow-md p-2">
                 <label htmlFor="cgpa">CURRENT CGPA</label>
                 <input
@@ -168,7 +166,9 @@ const Hero = () => {
                       className="w-1/4 outline-none border-b border-blue-700 border-1 mb-2 p-2"
                       placeholder="units"
                     />
-                    {showGrade && <p className="mb-2 p-2">{grade.value}</p>}
+                    {showGrade && (
+                      <p className="mb-2 p-2 mr-2">{grade.value}</p>
+                    )}
                     <button
                       onClick={() =>
                         setGrades(grades.filter((prev) => prev.id !== grade.id))
