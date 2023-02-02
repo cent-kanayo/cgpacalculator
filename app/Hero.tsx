@@ -112,8 +112,8 @@ const Hero = () => {
         </div>
         <div className=" rounded-md p-2">
           <form onSubmit={handleSubmit}>
+            <p className="text-red-600">Enter only numeric values</p>
             <div className="flex justify-between items-center mb-6 gap-x-5">
-              <p className="text-red-600">Enter only numeric values</p>
               <div className="flex-1 flex flex-col gap-4 text-blue-600 rounded-md shadow-md p-2">
                 <label htmlFor="cgpa">CURRENT CGPA</label>
                 <input
